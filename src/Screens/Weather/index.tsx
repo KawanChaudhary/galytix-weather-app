@@ -7,7 +7,8 @@ import { ModeToggle, WeatherCard, MoonPhase, WithLoader } from "../../components
 import sunnyIcon from "../../assets/sunny.png";
 
 const fetchWeather = async (capital:string, unit: string) => {
-  const url = `${REST_WEATHER_URL}?q=${capital}&appid=794ee95e63c5a32aaf88cd813fa2e425&units=${unit}`;
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const url = `${REST_WEATHER_URL}?q=${capital}&appid=${apiKey}&units=${unit}`;
   const { data } = await axiosInstance.get(url);
   return data;
 };

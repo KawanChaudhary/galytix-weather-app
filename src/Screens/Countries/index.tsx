@@ -48,7 +48,6 @@ const Countries: React.FC = () => {
   const currentCountries = filteredCountries.slice(indexOfFirst, indexOfLast);
 
   const handleViewWeather = (country:Country) => {
-    console.log(country);
     navigate('/weather/country', { state: { country: country } });
   }
 
