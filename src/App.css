@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+th, td {
+  word-wrap: break-word;
+}
