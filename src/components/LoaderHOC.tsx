@@ -23,7 +23,7 @@ const withLoader: React.FC<LoaderProps> = ({
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
-        <Lottie options={defaultOptions} height={150} width={150} />
+        <Lottie options={defaultOptions} height={250} width={250} />
       </div>
     );
   }
