@@ -8,6 +8,7 @@ export interface Country {
   capital: string;
   region: string;
   cca2: string;
+  latlng:[]
 }
 
 export interface WeatherData {

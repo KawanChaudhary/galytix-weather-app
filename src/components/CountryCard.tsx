@@ -1,13 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Country } from "../types";
 
 interface CardCountryProp {
   country: Country;
+  handleViewWeather: Function
 }
 
-const CountryCard: React.FC<CardCountryProp> = ({ country }) => {
-  const navigate = useNavigate();
+const CountryCard: React.FC<CardCountryProp> = ({ country, handleViewWeather }) => {
 
   return (
     <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-2">
@@ -45,9 +44,7 @@ const CountryCard: React.FC<CardCountryProp> = ({ country }) => {
           </div>
           <button
             className="btn btn-outline-danger mt-auto"
-            onClick={() =>
-              navigate(`/weather/${country.capital}/${country.cca2}`)
-            }
+            onClick={() => handleViewWeather(country)}
           >
             View Weather
           </button>

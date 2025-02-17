@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../api";
 import { REST_COUNTRIES_URL } from "../../endpoints";
@@ -13,7 +14,7 @@ import {
   WithLoader,
 } from "../../components";
 
-const fetchCountries = async (): Promise<Country[]> => {
+const fetchCountries = async () => {
   const { data } = await axiosInstance.get(REST_COUNTRIES_URL);
   return data;
 };
@@ -24,6 +25,7 @@ const Countries: React.FC = () => {
     queryFn: fetchCountries,
   });
 
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isTableMode, setIsTableMode] = useState(true);
@@ -32,7 +34,7 @@ const Countries: React.FC = () => {
   const countriesPerPage = 12;
 
   const filteredCountries = countries
-    .filter((country) =>
+    .filter((country:Country) =>
       country.name.common.toLowerCase().includes(search.toLowerCase())
     )
     .sort((a, b) => {
@@ -45,6 +47,11 @@ const Countries: React.FC = () => {
   const indexOfFirst = indexOfLast - countriesPerPage;
   const currentCountries = filteredCountries.slice(indexOfFirst, indexOfLast);
 
+  const handleViewWeather = (country:Country) => {
+    console.log(country);
+    navigate('/weather/country', { state: { country: country } });
+  }
+
   return (
     <WithLoader isLoading={isLoading}>
       <div className="container">
@@ -54,18 +61,18 @@ const Countries: React.FC = () => {
             <SearchBar onSearch={setSearch} />
           </div>
           <div className="col-12 col-md-4">
-            <ModeToggle isTableMode={isTableMode} onToggle={() => setIsTableMode((prev) => !prev)} />
+            <ModeToggle isFirstValue={isTableMode} value1="Table" value2="Card" onToggle={() => setIsTableMode((prev) => !prev)} />
           </div>
           <div className="col-12 col-md-4">
             <SortingByName onSortChange={setSortOrder} />
           </div>
         </div>
         {isTableMode ? (
-          <CountriesTable countries={currentCountries} />
+          <CountriesTable countries={currentCountries} handleViewWeather={handleViewWeather} />
         ) : (
           <div className="row">
-            {currentCountries.map((country, index) => (
-              <CountryCard key={index} country={country} />
+            {currentCountries.map((country:Country, index:number) => (
+              <CountryCard key={index} country={country} handleViewWeather={handleViewWeather} />
             ))}
           </div>
         )}

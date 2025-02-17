@@ -5,3 +5,5 @@ export { default as PaginationComponent } from "./Pagination";
 export { default as SearchBar } from "./SearchBar";
 export { default as WithLoader } from "./LoaderHOC";
 export { default as SortingByName } from "./SortingByName";
+export { default as WeatherCard } from "./WeatherCard";
+export { default as MoonPhase } from "./MoonPhase";

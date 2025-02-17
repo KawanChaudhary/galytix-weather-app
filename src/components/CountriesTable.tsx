@@ -1,14 +1,13 @@
-// /components/CountriesTable.tsx
 import React from "react";
 import { Country } from "../types";
-import { useNavigate } from "react-router-dom";
 
 interface CountriesTableProps {
   countries: Country[];
+  handleViewWeather: Function
 }
 
-const CountriesTable: React.FC<CountriesTableProps> = ({ countries }) => {
-  const navigate = useNavigate();
+const CountriesTable: React.FC<CountriesTableProps> = ({ countries, handleViewWeather }) => {
+  
 
   return (
     <table className="table table-striped table-bordered table-hover" style={{ width: "100%", tableLayout: "fixed" }}>
@@ -33,7 +32,7 @@ const CountriesTable: React.FC<CountriesTableProps> = ({ countries }) => {
             <td>
               <button
                 className="btn btn-outline-danger btn-sm"
-                onClick={() => navigate(`/weather/${country.capital}/${country.cca2}`)}
+                onClick={() => handleViewWeather(country)}
               >
                 View Weather
               </button>
