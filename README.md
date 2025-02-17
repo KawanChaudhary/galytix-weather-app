@@ -7,9 +7,7 @@ A responsive web application that displays weather information for countries and
 -   Display a list of countries with sorting, filtering, and pagination.
 -   View weather details (temperature, precipitation, wind) for the selected country's capital.
 -   Toggle between metric and imperial units.
--   Show a map for the selected country.
 -   Display weather icons and a moon phase component.
--   Colorful and responsive design.
 
 ## Tech Stack
 
@@ -24,7 +22,7 @@ A responsive web application that displays weather information for countries and
     Clone the repository to your local machine:
 
     ```bash
-    git clone [https://github.com/your-username/world-weather-app.git](https://github.com/your-username/world-weather-app.git)
+    git clone https://github.com/your-username/world-weather-app.git
     cd world-weather-app
     ```
 
@@ -42,7 +40,6 @@ A responsive web application that displays weather information for countries and
 
     ```env
     VITE_APP_API_KEY=your-openweathermap-api-key
-    VITE_APP_WEATHER_API_URL=[https://api.openweathermap.org/data/2.5/weather](https://api.openweathermap.org/data/2.5/weather)
     ```
 
     Replace `your-openweathermap-api-key` with your actual OpenWeatherMap API key.
@@ -60,7 +57,7 @@ A responsive web application that displays weather information for countries and
     npm run dev
     ```
 
-    Open your browser and go to `http://localhost:3000` to view the app.
+    Open your browser and go to `http://localhost:5173` to view the app.
 
 5.  **Build for Production**
 
